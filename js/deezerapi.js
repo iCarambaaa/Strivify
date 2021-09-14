@@ -1,3 +1,4 @@
+
 window.onload = () => {
 
     fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem", {
@@ -42,11 +43,15 @@ window.onload = () => {
                       </a>
                       </div>
                         `
+                        album1.add(`${obj.album.title}`)
+                        // console.log(album1)
+
 
                         row.appendChild(col)
                     }
-                    let baum = body.data[7].album.cover_medium
-                    console.log(baum)
+                    // let baum = body.data[7].album.cover_medium
+                    // console.log(baum)
+                    console.log(album1)
     })
     
 
@@ -67,7 +72,7 @@ fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=metallica", {
     
 
     .then(body => {
-        console.log(body);
+        // console.log(body);
 
 const row2 = document.querySelector("body > div > div > div.mr-0.mainPage > div:nth-child(6)")
 
@@ -90,9 +95,12 @@ const row2 = document.querySelector("body > div > div > div.mr-0.mainPage > div:
                 </div>
             </div>
     `
+    album2.add(`${obj.album.title}`)
 
     row2.appendChild(col)
-}})
+}
+console.log(album2)
+})
 
         .catch(err => {
             console.error(err);
@@ -111,7 +119,7 @@ fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=behemoth", {
     
 
     .then(body => {
-        console.log(body);
+        // console.log(body);
 
 const row3 = document.querySelector("body > div > div > div.mr-0.mainPage > div.container-fluid.d-flex.justify-content-start.mb-5.pb-5")
 
@@ -135,12 +143,17 @@ const row3 = document.querySelector("body > div > div > div.mr-0.mainPage > div.
             </div>
     `
 
+    album3.add(`${obj.album.title}`)
+        
     row3.appendChild(col)
-}})
+    }
+    console.log(album3)}
+)
 
         .catch(err => {
             console.error(err);
 });
+
 }
 
 
@@ -161,3 +174,30 @@ const overflowOff = function(){
     off.classList.add("flex-wrap")
     console.log(off)
 }
+
+
+// ALBUM LIST
+
+let album1 = new Set()
+let album2 = new Set()
+let album3 = new Set()
+
+let albumList = () => {
+
+   let list = new Set([...album1, ...album2, ...album3])
+   //console.log(list)
+   let ol = document.querySelector("#exampleModal13 > div > div > div.modal-body.text-dark > ol")
+    ol.innerHTML = ""
+    list = [...list]
+   
+    for (let i = 0; i < list.length; i++ ) {
+        let item = document.createElement("li");
+        item.innerHTML = list[i];
+        ol.appendChild(item);
+    }
+   
+    
+    console.log(`Hello there! This particular page contains ` + list.length + " unique albums. Thanks for visiting!")
+
+}
+
