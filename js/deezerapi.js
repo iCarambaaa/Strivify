@@ -16,8 +16,8 @@ window.onload = () => {
 
         const row = document.querySelector("body > div > div > div.mr-0.mainPage > div.row.fetch")
 
-                    // for (let i = 0; i < body.length; i++) {
-                        const obj = body
+                    for (let i = 0; i < body.data.length; i++) {
+                        const obj = body.data[i]
 
                         const col = document.createElement("div")
                         col.className = "col-3"
@@ -25,16 +25,16 @@ window.onload = () => {
                         col.innerHTML = `
                         
                         <div class="card">
-                            <img src="${obj.data[0].album.cover_medium}" class="card-img-top" alt="...">
+                            <img src="${obj.album.cover_medium}" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">${obj.data[0].title_short}</h5>
-                                <p class="card-text">${obj.data[0].duration}s</p>
+                                <h5 class="card-title">${obj.title_short}</h5>
+                                <p class="card-text">${obj.duration}s</p>
                             </div>
                         </div>
                         `
 
                         row.appendChild(col)
-                    // }
+                    }
                     let baum = body.data[7].album.cover_medium
                     console.log(baum)
     })
