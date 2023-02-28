@@ -17,7 +17,7 @@ window.onload = () => {
 
         const row = document.querySelector("body > div > div > div.mr-0.mainPage > div.d-flex")
 
-                    for (let i = 0; i < body.data.length; i++) {
+                    for (let i = 0; i < 5; i++) {
                         const obj = body.data[i]
 
                         const col = document.createElement("div")
